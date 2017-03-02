@@ -1,8 +1,8 @@
 ﻿  main.cpp
-c:\users\normanbg\desktop\sdl\sdl\main.cpp(12): warning C4101: 'bmask': unreferenced local variable
-c:\users\normanbg\desktop\sdl\sdl\main.cpp(12): warning C4101: 'gmask': unreferenced local variable
-c:\users\normanbg\desktop\sdl\sdl\main.cpp(12): warning C4101: 'amask': unreferenced local variable
-c:\users\normanbg\desktop\sdl\sdl\main.cpp(11): warning C4101: 'surface': unreferenced local variable
-c:\users\normanbg\desktop\sdl\sdl\main.cpp(12): warning C4101: 'rmask': unreferenced local variable
-  SDL.vcxproj -> C:\Users\normanbg\Desktop\SDL\Debug\SDL.exe
-  SDL.vcxproj -> C:\Users\normanbg\Desktop\SDL\Debug\SDL.pdb (Partial PDB)
+c:\users\normanbg\documents\github\project1-sdl\sdl\sdl\main.cpp(12): warning C4101: 'bmask': unreferenced local variable
+c:\users\normanbg\documents\github\project1-sdl\sdl\sdl\main.cpp(12): warning C4101: 'gmask': unreferenced local variable
+c:\users\normanbg\documents\github\project1-sdl\sdl\sdl\main.cpp(12): warning C4101: 'amask': unreferenced local variable
+c:\users\normanbg\documents\github\project1-sdl\sdl\sdl\main.cpp(11): warning C4101: 'surface': unreferenced local variable
+c:\users\normanbg\documents\github\project1-sdl\sdl\sdl\main.cpp(12): warning C4101: 'rmask': unreferenced local variable
+  SDL.vcxproj -> C:\Users\normanbg\Documents\GitHub\Project1-SDL\SDL\Debug\SDL.exe
+  SDL.vcxproj -> C:\Users\normanbg\Documents\GitHub\Project1-SDL\SDL\Debug\SDL.pdb (Partial PDB)

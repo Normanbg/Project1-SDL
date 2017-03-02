@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
 
 	SDL_RenderFillRect(renderer, &r);
 	SDL_RenderPresent(renderer);
-	system("pause");
+	
 	SDL_Delay(5000);
 
 	SDL_Quit();
