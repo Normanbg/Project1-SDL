@@ -16,14 +16,13 @@ int main(int argc, char* argv[])
 	SDL_Init(SDL_INIT_EVERYTHING);
 
 	SDL_CreateWindowAndRenderer(640, 480, SDL_WINDOW_RESIZABLE, &window, &renderer);
-	SDL_Rect r;
-	r.x = 275;
-	r.y = 165;
-	r.w = 150;
-	r.h = 150;
 	SDL_Event event;
-	
-		bool running = true;
+	SDL_Surface* bitmap = SDL_LoadBMP("spaceship.bmp");
+	SDL_Rect r;
+	r.x = 270;
+	r.y = 190;
+	r.w = 100;
+	r.h = 100;		bool running = true;
 		while (running)
 		{
 			while (SDL_PollEvent(&event))
@@ -31,18 +30,38 @@ int main(int argc, char* argv[])
 				if (event.key.keysym.sym == SDLK_ESCAPE)
 				{
 						running = false;
-				}				
+				}	
+				
+				if (event.key.keysym.sym == SDLK_RIGHT && r.x < 540)
+				{
+					r.x += 5;
+				}
+				if (event.key.keysym.sym == SDLK_LEFT && r.x > 0)
+				{
+					r.x -= 5;
+				}
+				if (event.key.keysym.sym == SDLK_UP && r.y > 0)
+				{
+					r.y -= 5;
+				}
+				if (event.key.keysym.sym == SDLK_DOWN && r.y < 380)
+				{
+					r.y += 5;
+				}
+
 			}
 			SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 
 			SDL_RenderClear(renderer);
 
-			SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+			//SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+			SDL_BlitSurface(bitmap, &r, surface, &destination);
 
-			SDL_RenderFillRect(renderer, &r);
+			//SDL_RenderFillRect(renderer, &r);
 			SDL_RenderPresent(renderer);
 		}
 
+	SDL_FreeSurface(bitmap);
 	SDL_Quit();
 	return(0);
 }
