@@ -9,20 +9,21 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	SDL_Surface *surface;
 	Uint32 rmask, gmask, bmask, amask;
 	SDL_Window *window;
 	SDL_Renderer *renderer;
 	SDL_Init(SDL_INIT_EVERYTHING);
 
 	SDL_CreateWindowAndRenderer(640, 480, SDL_WINDOW_RESIZABLE, &window, &renderer);
+	SDL_Surface* surface = SDL_GetWindowSurface(window);
 	SDL_Event event;
 	SDL_Surface* bitmap = SDL_LoadBMP("spaceship.bmp");
 	SDL_Rect r;
 	r.x = 270;
 	r.y = 190;
 	r.w = 100;
-	r.h = 100;		bool running = true;
+	r.h = 100;
+		bool running = true;
 		while (running)
 		{
 			while (SDL_PollEvent(&event))
@@ -52,13 +53,14 @@ int main(int argc, char* argv[])
 			}
 			SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 
-			SDL_RenderClear(renderer);
+			//SDL_RenderClear(renderer);
 
 			//SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
-			SDL_BlitSurface(bitmap, &r, surface, &destination);
+			SDL_BlitSurface (bitmap, NULL, surface, &r);
 
 			//SDL_RenderFillRect(renderer, &r);
-			SDL_RenderPresent(renderer);
+			//SDL_RenderPresent(renderer);
+			SDL_UpdateWindowSurface(window);
 		}
 
 	SDL_FreeSurface(bitmap);

@@ -1,15 +1,17 @@
-﻿Build started 04/03/2017 11:03:17.
+﻿Build started 06/03/2017 20:13:34.
      1>Project "C:\Users\Norman-PC\Documents\GitHub\Project1-SDL\SDL\SDL\SDL.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
-     1>c:\users\norman-pc\documents\github\project1-sdl\sdl\sdl\main.cpp(13): warning C4101: 'bmask': unreferenced local variable
-     1>c:\users\norman-pc\documents\github\project1-sdl\sdl\sdl\main.cpp(13): warning C4101: 'gmask': unreferenced local variable
-     1>c:\users\norman-pc\documents\github\project1-sdl\sdl\sdl\main.cpp(13): warning C4101: 'amask': unreferenced local variable
-     1>c:\users\norman-pc\documents\github\project1-sdl\sdl\sdl\main.cpp(13): warning C4101: 'rmask': unreferenced local variable
-     1>c:\users\norman-pc\documents\github\project1-sdl\sdl\sdl\main.cpp(63): error C4700: uninitialized local variable 'surface' used
-     1>Done Building Project "C:\Users\Norman-PC\Documents\GitHub\Project1-SDL\SDL\SDL\SDL.vcxproj" (Build target(s)) -- FAILED.
+     1>c:\users\norman-pc\documents\github\project1-sdl\sdl\sdl\main.cpp(12): warning C4101: 'bmask': unreferenced local variable
+     1>c:\users\norman-pc\documents\github\project1-sdl\sdl\sdl\main.cpp(12): warning C4101: 'gmask': unreferenced local variable
+     1>c:\users\norman-pc\documents\github\project1-sdl\sdl\sdl\main.cpp(12): warning C4101: 'amask': unreferenced local variable
+     1>c:\users\norman-pc\documents\github\project1-sdl\sdl\sdl\main.cpp(12): warning C4101: 'rmask': unreferenced local variable
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Norman-PC\Documents\GitHub\Project1-SDL\SDL\Debug\SDL.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"C:\Users\Norman-PC\Documents\GitHub\Project1-SDL\SDL\Debug\SDL.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Norman-PC\Documents\GitHub\Project1-SDL\SDL\Debug\SDL.lib" /MACHINE:X86 Debug\main.obj
+         SDL.vcxproj -> C:\Users\Norman-PC\Documents\GitHub\Project1-SDL\SDL\Debug\SDL.exe
+     1>Done Building Project "C:\Users\Norman-PC\Documents\GitHub\Project1-SDL\SDL\SDL\SDL.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:00.44
+Time Elapsed 00:00:00.74
