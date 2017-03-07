@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
 	SDL_Surface* surface = SDL_GetWindowSurface(window);
 	SDL_Event event;
 	SDL_Surface* bitmap = SDL_LoadBMP("spaceship.bmp");
-	Uint32 black = SDL_MapRGB(surface->format, 0, 0, 0);
+	Uint32 white = SDL_MapRGB(surface->format, 255, 255, 255);
 	SDL_Rect r;
 	r.x = 270;
 	r.y = 190;
@@ -54,7 +54,7 @@ int main(int argc, char* argv[])
 				}
 
 			}
-			SDL_FillRect(surface, NULL, black);
+			SDL_FillRect(surface, NULL, white);
 			SDL_BlitSurface (bitmap, NULL, surface, &r);
 			SDL_UpdateWindowSurface(window);
 		}
