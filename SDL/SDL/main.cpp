@@ -8,8 +8,9 @@ using namespace std;
 #pragma comment( lib, "SDL2.lib" )
 #pragma comment( lib, "SDL2main.lib" )
 bool running = true;
-bool shoot = false;
+bool shoot[Max_Bullets];
 bool mdown = false, mup = false, mright = false, mleft = false;
+
 
 
 void movement(SDL_Rect* r)
@@ -47,6 +48,7 @@ int main(int argc, char* argv[])
 	SDL_Event event;
 	SDL_Surface* bitmap = SDL_LoadBMP("spaceship.bmp");
 	SDL_Surface* bullet = SDL_LoadBMP("bullet.bmp");
+	SDL_Surface* background = SDL_LoadBMP("background.bmp");
 	Uint32 white = SDL_MapRGB(surface->format, 25, 25, 255);
 	SDL_Rect r;
 	r.x = 270;
@@ -54,7 +56,19 @@ int main(int argc, char* argv[])
 	r.w = 100;
 	r.h = 100;
 
+	SDL_Rect bg;
+	bg.w = 960;
+	bg.h = 480;
+	bg.x = 0;
+	bg.y = 0;
+
+	for (int i = 0; i < Max_Bullets; ++i)
+	{
+		shoot[i] = false;
+	}
+
 	SDL_Rect b[Max_Bullets];
+
 	for (int i = 0; i < Max_Bullets; ++i)
 	{
 		b[i].w = 50;
@@ -75,10 +89,15 @@ int main(int argc, char* argv[])
 					{
 						if (event.key.keysym.sym == SDLK_SPACE)
 						{
-							//for si la bala ha estat disparada res, sino fes aixo.
-							b[0].x = r.x + 50;
-							b[0].y = r.y;
-							shoot = true;
+							for (int i = 0; i < Max_Bullets; ++i)
+							{
+								if (shoot[i] == false)
+								{
+									b[i].x = r.x + 50;
+									b[i].y = r.y;
+									shoot[i] = true;
+								}
+							}
 						}
 						if (event.key.keysym.sym == SDLK_RIGHT && r.x < 590)
 						{
@@ -122,13 +141,21 @@ int main(int argc, char* argv[])
 				}
 			}
 			movement(&r);
-			if (shoot == true)
+			for (int i = 0; i < Max_Bullets; ++i)
 			{
-				b.x += 1;
+				if (shoot[i] == true)
+				{
+					b[i].x += 1;
+					if (b[i].x >= 640)
+					{
+						shoot[i] = false;
+					}
+				}
 			}
+			
 			SDL_FillRect(surface, NULL, white);
 			SDL_BlitSurface (bitmap, NULL, surface, &r);
-			SDL_BlitSurface(bullet, NULL, surface, &b);
+			SDL_BlitSurface(bullet, NULL, surface, &b[0]);
 			SDL_UpdateWindowSurface(window);
 		}
 
