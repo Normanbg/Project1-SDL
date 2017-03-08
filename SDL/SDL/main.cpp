@@ -1,12 +1,14 @@
 #include <iostream>
 using namespace std;
 #include <stdlib.h>
-
+#include "SDL_image.h"
 #include "SDL.h"
 #define Max_Bullets 2
 
-#pragma comment( lib, "SDL2.lib" )
+#pragma comment( lib, "SDL2_image.lib" )
 #pragma comment( lib, "SDL2main.lib" )
+#pragma comment( lib, "SDL2.lib" )
+
 bool running = true;
 bool shoot[Max_Bullets];
 bool mdown = false, mup = false, mright = false, mleft = false;
@@ -35,32 +37,48 @@ void movement(SDL_Rect* r)
 
 int main(int argc, char* argv[])
 {
+	int flags = IMG_INIT_PNG;
+	int initted = IMG_Init(flags);
 	
 	SDL_Window *window;
 	SDL_Renderer * renderer;
 	
+	//renderer = SDL_;SDL_RENDERER_PRESENTVSYNC;
 	SDL_Init(SDL_INIT_EVERYTHING);
-	SDL_RENDERER_PRESENTVSYNC;
+	IMG_Init(IMG_INIT_PNG);
+	
 
 	SDL_CreateWindowAndRenderer(640, 480, SDL_WINDOW_RESIZABLE, &window, &renderer);
 
 	SDL_Surface* surface = SDL_GetWindowSurface(window);
+	SDL_Surface *image;
+	image = IMG_Load("sprite1.png");
 	SDL_Event event;
-	SDL_Surface* bitmap = SDL_LoadBMP("spaceship.bmp");
-	SDL_Surface* bullet = SDL_LoadBMP("bullet.bmp");
-	SDL_Surface* background = SDL_LoadBMP("background.bmp");
-	Uint32 white = SDL_MapRGB(surface->format, 25, 25, 255);
+	
+	SDL_Texture* background = SDL_CreateTextureFromSurface(renderer, SDL_LoadBMP("background.bmp"));
+	SDL_Texture* sprite = SDL_CreateTextureFromSurface(renderer,image);
+	SDL_Texture* bitmap = SDL_CreateTextureFromSurface(renderer, SDL_LoadBMP("spaceship.bmp"));
+	SDL_Texture* bullet = SDL_CreateTextureFromSurface(renderer, SDL_LoadBMP("bullet.bmp"));
+
+	//SDL_Rect sprite;
+
 	SDL_Rect r;
 	r.x = 270;
 	r.y = 190;
 	r.w = 100;
 	r.h = 100;
 
-	SDL_Rect bg;
-	bg.w = 960;
-	bg.h = 480;
-	bg.x = 0;
-	bg.y = 0;
+	SDL_Rect bg1;
+	bg1.w = 960;
+	bg1.h = 480;
+	bg1.x = 0;
+	bg1.y = 0;
+
+	SDL_Rect bg2;
+	bg2.w = 960;
+	bg2.h = 480;
+	bg2.x = 960;
+	bg2.y = 0;
 
 	for (int i = 0; i < Max_Bullets; ++i)
 	{
@@ -152,14 +170,31 @@ int main(int argc, char* argv[])
 					}
 				}
 			}
-			
-			SDL_FillRect(surface, NULL, white);
-			SDL_BlitSurface (bitmap, NULL, surface, &r);
-			SDL_BlitSurface(bullet, NULL, surface, &b[0]);
-			SDL_UpdateWindowSurface(window);
-		}
+			if (bg1.x == -1280) {
+				bg1.x = 1280;
+			}
 
-	SDL_FreeSurface(bitmap);
+			if (bg2.x == -1280) {
+				bg2.x = 1280;
+			}
+
+			bg1.x -= 1;
+			bg2.x -= 1;
+			
+			SDL_RenderCopy(renderer, background, NULL, &bg2);
+
+			SDL_RenderCopy(renderer, background, NULL, &bg1);
+
+			SDL_RenderCopy(renderer, bitmap, NULL, &r);
+
+			SDL_RenderCopy(renderer, bullet, NULL, &b[0]);
+
+
+
+			SDL_RenderPresent(renderer);
+
+		}
+	IMG_Quit();
 	SDL_Quit();
 	return(0);
 }
